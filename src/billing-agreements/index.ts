@@ -6,7 +6,7 @@ export async function createBillingAgreementToken(
   token: IPayPalAccessToken,
   data: any = {}
 ) {
-  const payload = data || DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
+  const payload = Object.keys(data).length > 0 ? data : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 
   const options = {
     method: "POST",
@@ -16,6 +16,7 @@ export async function createBillingAgreementToken(
     },
     body: JSON.stringify(payload)
   };
+
   return await fetch(
     `${CONFIG.get(
       "PAYPAL_REST_HOSTNAME"
