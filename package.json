@@ -9,6 +9,7 @@
     "format": "prettier --write \"src/**/*.{json,ts,yml,md}\""
   },
   "author": "Andrew Throener",
+  "homepage": "https://github.com/trainerbill/paypal-isomorphic-functions",
   "license": "ISC",
   "devDependencies": {
     "@types/btoa": "^1.2.3",
