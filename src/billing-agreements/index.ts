@@ -18,7 +18,7 @@ export async function createBillingAgreementToken(
   };
   return await fetch(
     `${CONFIG.get(
-      "PAYAL_REST_HOSTNAME"
+      "PAYPAL_REST_HOSTNAME"
     )}/v1/billing-agreements/agreement-tokens`,
     options
   );
@@ -37,7 +37,7 @@ export async function createBillingAgreement(
     body: JSON.stringify({ token_id })
   };
   return await fetch(
-    `${CONFIG.get("PAYAL_REST_HOSTNAME")}/v1/billing-agreements/agreements`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/billing-agreements/agreements`,
     options
   );
 }
