@@ -6,7 +6,10 @@ export async function createBillingAgreementToken(
   token: IPayPalAccessToken,
   data: any = {}
 ) {
-  const payload = Object.keys(data).length > 0 ? data : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
+  const payload =
+    Object.keys(data).length > 0
+      ? data
+      : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 
   const options = {
     method: "POST",

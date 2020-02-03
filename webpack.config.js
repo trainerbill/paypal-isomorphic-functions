@@ -10,7 +10,7 @@ module.exports = {
     },
     output: {
         filename: 'paypal-isomorphic-functions.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'lib'),
         library: 'paypalFunctions',
         libraryTarget: 'umd'
     },
