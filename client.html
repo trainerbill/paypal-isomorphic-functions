@@ -11,12 +11,15 @@
         localStorage.setItem('PAYPAL_ENVIRONMENT', 'sandbox');
 
         let accessToken;
+        let orderId;
 
         paypalFunctions.Oauth.createAccessToken()
             .then(token => accessToken = token)
-            .then(token => paypalFunctions.Orders.createOrder(accessToken))
+            .then(token => paypalFunctions.Orders.create(accessToken))
             .then(res => res.json())
-            .then(data => paypalFunctions.Orders.updateOrder(accessToken, data.id))
+            .then(data => orderId = data.id)
+            .then(data => paypalFunctions.Orders.update(accessToken, orderId))
+            // .then(data => paypalFunctions.Orders.authorize(accessToken, orderId))
             .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));    
     </script>
     <div id="result"></div>

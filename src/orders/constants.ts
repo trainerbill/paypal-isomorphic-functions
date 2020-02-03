@@ -1,5 +1,5 @@
 export const DEFAULT_CREATE_ORDER_PAYLOAD = {
-    intent: "CAPTURE",
+    intent: "AUTHORIZE",
     purchase_units: [
         {
             description: "This is cool",
