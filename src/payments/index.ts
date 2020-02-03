@@ -7,7 +7,8 @@ export async function create(
   data?: any,
   headers?: any
 ) {
-  const payload = data || DEFAULT_PAYMENT_CREATE_PAYLOAD;
+  const payload =
+    Object.keys(data).length > 0 ? data : DEFAULT_PAYMENT_CREATE_PAYLOAD;
 
   const options = {
     method: "POST",

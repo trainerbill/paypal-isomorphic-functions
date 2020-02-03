@@ -7,7 +7,10 @@ export async function createToken(
   data?: any,
   headers?: any
 ) {
-  const payload = data || DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
+  const payload =
+    Object.keys(data).length > 0
+      ? data
+      : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 
   const options = {
     method: "POST",
