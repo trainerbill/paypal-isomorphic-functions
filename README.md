@@ -19,7 +19,36 @@ Oauth.createAccessToken()
     .then(res => res.json())
     .then(data => Orders.updateOrder(accessToken, data.id))
     .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));
+```
 
+### Middleware
+
+If you are using typescript you may have to define the property on express.  add a file `src/types/express/index.d.ts` and add
+```
+import { Request } from "express";
+import { Oauth } from "paypal-isomorphic-functions";
+
+declare global {
+  namespace Express {
+    export interface Request {
+      paypalAccessToken: Oauth.IPayPalAccessToken;
+    }
+  }
+}
+```
+
+```
+import { Middleware, Payments } from 'paypal-isomorphic-functions';
+app.post(
+  "/rest/v1/payments/payment",
+  Middleware.accessTokenMiddleware,
+  async (req, res) => {
+    logger.verbose(`Body: ${req.body}`);
+    const response = await Payments.create(req.paypalAccessToken, req.body);
+    res.json(await response.json());
+  }
+);
+```
 
 # Client
 
