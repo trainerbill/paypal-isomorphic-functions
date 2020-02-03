@@ -8,6 +8,17 @@ PAYPAL_CLIENT_SECRET
 PAYPAL_ENVIRONMENT
 ```
 
+### Usage
+```
+import { Oauth, Orders } from 'paypal-isomorphic-functions';
+let accessToken;
+
+Oauth.createAccessToken()
+    .then(token => accessToken = token)
+    .then(token => Orders.createOrder(accessToken))
+    .then(res => res.json())
+    .then(data => Orders.updateOrder(accessToken, data.id))
+    .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));
 
 
 # Client
