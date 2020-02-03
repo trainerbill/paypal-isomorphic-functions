@@ -4,18 +4,17 @@ import { CONFIG } from "../config";
 
 export async function createToken(
   token: IPayPalAccessToken,
-  data: any = {}
+  data?: any,
+  headers?: any,
 ) {
-  const payload =
-    Object.keys(data).length > 0
-      ? data
-      : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
+  const payload = data || DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 
   const options = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token.access_token}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      ...headers
     },
     body: JSON.stringify(payload)
   };
@@ -30,13 +29,15 @@ export async function createToken(
 
 export async function create(
   token: IPayPalAccessToken,
-  token_id: string
+  token_id: string,
+  headers?: any
 ) {
   const options = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token.access_token}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      ...headers
     },
     body: JSON.stringify({ token_id })
   };

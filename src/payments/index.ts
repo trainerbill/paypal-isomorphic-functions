@@ -2,14 +2,15 @@ import { IPayPalAccessToken } from "../oauth/interfaces";
 import { CONFIG } from "../config";
 import { DEFAULT_PAYMENT_CREATE_PAYLOAD } from "./constants";
 
-export async function create(token: IPayPalAccessToken, data?: any) {
+export async function create(token: IPayPalAccessToken, data?: any, headers?: any) {
   const payload = data || DEFAULT_PAYMENT_CREATE_PAYLOAD;
 
   const options = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token.access_token}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      ...headers
     },
     body: JSON.stringify(payload)
   };

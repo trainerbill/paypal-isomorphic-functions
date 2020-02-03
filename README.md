@@ -1,6 +1,8 @@
 ## Intro
+Package full of typed PayPal functions that can be run in the browser or server.  You could call it an SDK.
 
-## Server config
+
+## Server Usage
 Required Environment variables.  Protip:  use dotenv
 ```
 PAYPAL_CLIENT_ID
@@ -8,7 +10,7 @@ PAYPAL_CLIENT_SECRET
 PAYPAL_ENVIRONMENT
 ```
 
-### Usage
+### Example
 ```
 import { Oauth, Orders } from 'paypal-isomorphic-functions';
 let accessToken;
@@ -50,15 +52,14 @@ app.post(
 );
 ```
 
-# Client
+# Client Usage
+The library outputs to `window.paypalFunctions`.  Place your client/secret in localStorage.  Obviously, you would not want to EVER place your production credentials in local storage.
 
 ### Include Script
 * Download the /lib/paypal-isomorphic-functions.js and include it in your site
 * Use unpkg:  `<script src="https://unpkg.com/paypal-isomorphic-functions@1.0.4/lib/paypal-isomorphic-functions.js"></script>` // Make sure you change the version number
 
-### Usage
-The library outputs to `window.paypalFunctions`.  Place your client/secret in localStorage
-
+### Example
 ```
 localStorage.setItem('PAYPAL_CLIENT_ID', '');
 localStorage.setItem('PAYPAL_CLIENT_SECRET', '');
