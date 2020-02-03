@@ -82,12 +82,37 @@ export async function authorize(
     method: "POST",
     headers: {
       Authorization: `Bearer ${token.access_token}`,
-      "Content-Type": "application/json"
-    }
-    // body: JSON.stringify(payload)
+      "Content-Type": "application/json",
+      ...headers
+    },
+    body: JSON.stringify(payload)
   };
   return await fetch(
     `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}/authorize`,
+    options
+  );
+}
+
+export async function capture(
+  token: IPayPalAccessToken,
+  id: string,
+  data?: any,
+  headers?: any
+) {
+  // TODO: add a default
+  const payload = data;
+
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token.access_token}`,
+      "Content-Type": "application/json",
+      ...headers
+    },
+    body: JSON.stringify(payload)
+  };
+  return await fetch(
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}/capture`,
     options
   );
 }

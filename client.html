@@ -19,7 +19,8 @@
             .then(res => res.json())
             .then(data => orderId = data.id)
             .then(data => paypalFunctions.Orders.update(accessToken, orderId))
-            // .then(data => paypalFunctions.Orders.authorize(accessToken, orderId))
+            .then(data => paypalFunctions.Orders.get(accessToken, orderId))
+            .then(res => res.json())
             .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));    
     </script>
     <div id="result"></div>
