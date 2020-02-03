@@ -1,5 +1,5 @@
 import btoa from "btoa";
-import { isNode, isBrowser } from 'browser-or-node';
+import { isNode, isBrowser } from "browser-or-node";
 
 export const CONFIG = new Map();
 
