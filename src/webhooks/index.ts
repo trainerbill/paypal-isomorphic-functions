@@ -1,7 +1,7 @@
 import { IPayPalAccessToken } from "../oauth/interfaces";
 import { CONFIG } from "../config";
 
-export async function listWebhooks(token: IPayPalAccessToken) {
+export async function list(token: IPayPalAccessToken) {
   const options = {
     method: "GET",
     headers: {
@@ -15,7 +15,7 @@ export async function listWebhooks(token: IPayPalAccessToken) {
   );
 }
 
-export async function listWebhookEventTypes(token: IPayPalAccessToken) {
+export async function listEventTypes(token: IPayPalAccessToken) {
   const options = {
     method: "GET",
     headers: {
@@ -31,7 +31,7 @@ export async function listWebhookEventTypes(token: IPayPalAccessToken) {
   );
 }
 
-export async function createWebhookListener(
+export async function create(
   token: IPayPalAccessToken,
   url: string,
   event_types: any[]
@@ -50,7 +50,7 @@ export async function createWebhookListener(
   );
 }
 
-export async function deleteWebhook(token: IPayPalAccessToken, id: string) {
+export async function remove(token: IPayPalAccessToken, id: string) {
   const options = {
     method: "DELETE",
     headers: {
@@ -64,7 +64,7 @@ export async function deleteWebhook(token: IPayPalAccessToken, id: string) {
   );
 }
 
-export async function verifyWebhookSignature(
+export async function verify(
   token: IPayPalAccessToken,
   webhook_id: string,
   headers: any,

@@ -2,7 +2,7 @@ import { IPayPalAccessToken } from "../oauth/interfaces";
 import { CONFIG } from "../config";
 import { DEFAULT_CREATE_ORDER_PAYLOAD, DEFAULT_UPDATE_ORDER_PAYLOAD } from './constants'
 
-export async function createOrder(token: IPayPalAccessToken, data: any) {
+export async function create(token: IPayPalAccessToken, data: any) {
   const payload = data || DEFAULT_CREATE_ORDER_PAYLOAD;
 
   const options = {
@@ -19,7 +19,7 @@ export async function createOrder(token: IPayPalAccessToken, data: any) {
   );
 }
 
-export async function updateOrder(token: IPayPalAccessToken, id: string, data: any) {
+export async function update(token: IPayPalAccessToken, id: string, data: any) {
   const payload = data || DEFAULT_UPDATE_ORDER_PAYLOAD;
 
   const options = {

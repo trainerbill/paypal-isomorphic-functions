@@ -2,7 +2,7 @@ import { DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD } from "./constants";
 import { IPayPalAccessToken } from "../oauth/interfaces";
 import { CONFIG } from "../config";
 
-export async function createBillingAgreementToken(
+export async function createToken(
   token: IPayPalAccessToken,
   data: any = {}
 ) {
@@ -28,7 +28,7 @@ export async function createBillingAgreementToken(
   );
 }
 
-export async function createBillingAgreement(
+export async function create(
   token: IPayPalAccessToken,
   token_id: string
 ) {
