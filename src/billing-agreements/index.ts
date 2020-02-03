@@ -5,7 +5,7 @@ import { CONFIG } from "../config";
 export async function createToken(
   token: IPayPalAccessToken,
   data?: any,
-  headers?: any,
+  headers?: any
 ) {
   const payload = data || DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 

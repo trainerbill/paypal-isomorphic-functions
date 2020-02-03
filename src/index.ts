@@ -1,17 +1,10 @@
 import "./polyfills";
 
-import * as Orders from './orders';
-import * as BillingAgreements from './billing-agreements';
-import * as Oauth from './oauth';
-import * as Payments from './payments';
-import * as Webhooks from './webhooks';
-import * as Middleware from './middleware';
+import * as Orders from "./orders";
+import * as BillingAgreements from "./billing-agreements";
+import * as Oauth from "./oauth";
+import * as Payments from "./payments";
+import * as Webhooks from "./webhooks";
+import * as Middleware from "./middleware";
 
-export {
-    Orders,
-    Oauth,
-    BillingAgreements,
-    Payments,
-    Webhooks,
-    Middleware,
-}
+export { Orders, Oauth, BillingAgreements, Payments, Webhooks, Middleware };

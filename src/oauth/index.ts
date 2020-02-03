@@ -1,7 +1,7 @@
 import { IPayPalAccessToken } from "./interfaces";
 import { CONFIG } from "../config";
 
-export * from './interfaces';
+export * from "./interfaces";
 
 export async function createAccessToken() {
   const options = {
