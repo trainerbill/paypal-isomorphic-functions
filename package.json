@@ -1,6 +1,6 @@
 {
   "name": "paypal-isomorphic-functions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library of helpful paypal functions that can be run in a browser or server",
   "main": "./dist/index.js",
   "scripts": {
