@@ -64,3 +64,11 @@ export const DEFAULT_PAYMENT_CREATE_PAYLOAD = {
     cancel_url: "https://example.com/cancel"
   }
 };
+
+export const DEFAULT_PAYMENT_CAPTURE_PAYLOAD = {
+  amount: {
+    value: "1.99",
+    currency_code: "USD"
+  },
+  final_capture: true
+};
