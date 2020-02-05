@@ -31,6 +31,7 @@ export async function create(
 export async function capture(
   token: IPayPalAccessToken,
   id: string,
+  version = "v1",
   data?: any,
   headers?: any
 ) {
@@ -49,7 +50,7 @@ export async function capture(
   return await fetch(
     `${CONFIG.get(
       "PAYPAL_REST_HOSTNAME"
-    )}/v2/payments/authorizations/${id}/capture`,
+    )}/${version}/payments/authorizations/${id}/capture`,
     options
   );
 }
