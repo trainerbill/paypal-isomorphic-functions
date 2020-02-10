@@ -72,3 +72,34 @@ export const DEFAULT_PAYMENT_CAPTURE_PAYLOAD = {
   },
   final_capture: true
 };
+
+export const DEFAULT_PAYMENT_UPDATE_PAYLOAD = [
+  {
+    op: "replace",
+    path: "/transactions/0/amount",
+    value: {
+      total: "35.11",
+      currency: "USD",
+      details: {
+        subtotal: "30.00",
+        tax: "0.07",
+        shipping: "5.03",
+        handling_fee: "1.00",
+        shipping_discount: "-1.00",
+        insurance: "0.01"
+      }
+    }
+  },
+  {
+    op: "add",
+    path: "/transactions/0/item_list/shipping_address",
+    value: {
+      recipient_name: "Anna Gruneberg",
+      line1: "101 main st",
+      city: "Beverly Hills",
+      postal_code: "90210",
+      country_code: "US",
+      state: "CA"
+    }
+  }
+];

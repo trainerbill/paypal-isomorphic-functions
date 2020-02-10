@@ -12,6 +12,8 @@
 
         let accessToken;
         let orderId;
+        /*
+        
 
         paypalFunctions.Oauth.createAccessToken()
             .then(token => accessToken = token)
@@ -22,6 +24,16 @@
             .then(data => paypalFunctions.Orders.get(accessToken, orderId))
             .then(res => res.json())
             .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));    
+
+        */
+        paypalFunctions.Oauth.createAccessToken()
+            .then(token => accessToken = token)
+            .then(data => paypalFunctions.Payments.v1.create(accessToken))
+            .then(res => res.json())
+            .then((data) => paypalFunctions.Payments.v1.update(accessToken, data.id))
+            .then(res => res.json())
+            .then(data => document.getElementById('result').innerHTML = JSON.stringify(data))
+            .catch(err => console.log(err));
     </script>
     <div id="result"></div>
 
