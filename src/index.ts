@@ -6,5 +6,14 @@ import * as Oauth from "./oauth";
 import * as Payments from "./payments";
 import * as Webhooks from "./webhooks";
 import * as Middleware from "./middleware";
+import * as Partner from "./partner";
 
-export { Orders, Oauth, BillingAgreements, Payments, Webhooks, Middleware };
+export {
+  Orders,
+  Oauth,
+  BillingAgreements,
+  Payments,
+  Webhooks,
+  Middleware,
+  Partner
+};
