@@ -8,7 +8,7 @@ export async function createToken(
   headers?: any
 ) {
   const payload =
-    Object.keys(data).length > 0
+    data && Object.keys(data).length > 0
       ? data
       : DEFAULT_CREATE_BILLING_AGREEMENT_TOKEN_PAYLOAD;
 

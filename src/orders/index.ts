@@ -11,7 +11,7 @@ export async function create(
   headers?: any
 ) {
   const payload =
-    Object.keys(data).length > 0 ? data : DEFAULT_CREATE_ORDER_PAYLOAD;
+    data && Object.keys(data).length > 0 ? data : DEFAULT_CREATE_ORDER_PAYLOAD;
 
   const options = {
     method: "POST",
@@ -35,7 +35,7 @@ export async function update(
   headers?: any
 ) {
   const payload =
-    Object.keys(data).length > 0 ? data : DEFAULT_UPDATE_ORDER_PAYLOAD;
+    data && Object.keys(data).length > 0 ? data : DEFAULT_UPDATE_ORDER_PAYLOAD;
 
   const options = {
     method: "PATCH",
