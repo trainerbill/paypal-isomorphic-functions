@@ -97,7 +97,7 @@ export async function referenceTransaction(
       ? data
       : DEFAULT_REFERENCE_TRANSACTION_PAYLOAD;
 
-  payload.transactions[0].funding_instruments[0].billing.billing_agreement_id = billingAgreementId;
+  payload.funding_instruments[0].billing.billing_agreement_id = billingAgreementId;
 
   const options = {
     method: "POST",
