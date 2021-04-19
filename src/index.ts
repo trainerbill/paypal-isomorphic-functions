@@ -1,4 +1,5 @@
 import "./polyfills";
+import "./interfaces";
 
 import * as Orders from "./orders";
 import * as BillingAgreements from "./billing-agreements";
