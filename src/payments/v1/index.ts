@@ -3,7 +3,8 @@ import { CONFIG } from "../../config";
 import {
   DEFAULT_PAYMENT_CREATE_PAYLOAD,
   DEFAULT_PAYMENT_CAPTURE_PAYLOAD,
-  DEFAULT_PAYMENT_UPDATE_PAYLOAD
+  DEFAULT_PAYMENT_UPDATE_PAYLOAD,
+  DEFAULT_REFERENCE_TRANSACTION_PAYLOAD
 } from "../constants";
 
 export async function create(
@@ -81,6 +82,34 @@ export async function update(
   };
   return await fetch(
     `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/payment/${id}`,
+    options
+  );
+}
+
+export async function referenceTransaction(
+  token: IPayPalAccessToken,
+  billingAgreementId: string,
+  data?: any,
+  headers?: any
+) {
+  const payload =
+    data && Object.keys(data).length > 0
+      ? data
+      : DEFAULT_REFERENCE_TRANSACTION_PAYLOAD;
+
+  payload.transactions[0].funding_instruments[0].billing.billing_agreement_id = billingAgreementId;
+
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token.access_token}`,
+      "Content-Type": "application/json",
+      ...headers
+    },
+    body: JSON.stringify(payload)
+  };
+  return await fetch(
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/payment`,
     options
   );
 }

@@ -103,3 +103,25 @@ export const DEFAULT_PAYMENT_UPDATE_PAYLOAD = [
     }
   }
 ];
+
+export const DEFAULT_REFERENCE_TRANSACTION_PAYLOAD = {
+  intent: "sale",
+  payer: {
+    payment_method: "PAYPAL",
+    funding_instruments: [
+      {
+        billing: {
+          billing_agreement_id: "B-50V812176H0783741"
+        }
+      }
+    ]
+  },
+  transactions: [
+    {
+      amount: {
+        currency: "USD",
+        total: "1.00"
+      }
+    }
+  ]
+};
