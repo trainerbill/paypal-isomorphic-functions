@@ -1,6 +1,7 @@
 import "./polyfills";
 import "./interfaces";
 
+import * as Utils from "./util";
 import * as Orders from "./orders";
 import * as BillingAgreements from "./billing-agreements";
 import * as Oauth from "./oauth";
@@ -16,5 +17,6 @@ export {
   Payments,
   Webhooks,
   Middleware,
-  Partner
+  Partner,
+  Utils
 };
