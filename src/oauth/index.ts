@@ -61,7 +61,7 @@ export async function getUserInfo(token: IPayPalAccessToken) {
   return await fetch(
     `${CONFIG.get(
       "PAYPAL_REST_HOSTNAME"
-    )}/v1/oauth2/userinfo?schema=paypalv1.1`,
+    )}/v1/identity/oauth2/userinfo?schema=paypalv1.1`,
     options
   );
 }
