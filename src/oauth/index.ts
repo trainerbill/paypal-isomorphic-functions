@@ -25,3 +25,20 @@ export async function createAccessToken() {
 
   return response;
 }
+
+export async function getUserInfo() {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Basic ${CONFIG.get("PAYPAL_REST_BEARER")}`,
+      "Content-Type": "application/json"
+    }
+  };
+
+  return await fetch(
+    `${CONFIG.get(
+      "PAYPAL_REST_HOSTNAME"
+    )}/v1/oauth2/userinfo?schema=paypalv1.1`,
+    options
+  );
+}
