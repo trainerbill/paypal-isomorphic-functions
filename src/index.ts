@@ -9,6 +9,7 @@ import * as Payments from "./payments";
 import * as Webhooks from "./webhooks";
 import * as Middleware from "./middleware";
 import * as Partner from "./partner";
+import * as Risk from "./risk";
 
 export {
   Orders,
@@ -18,5 +19,6 @@ export {
   Webhooks,
   Middleware,
   Partner,
-  Utils
+  Utils,
+  Risk
 };
