@@ -1,11 +1,9 @@
 import { IPayPalAccessToken } from "../../oauth/interfaces";
 import { CONFIG } from "../../config";
 import {
-  DEFAULT_PAYMENT_CREATE_PAYLOAD,
-  DEFAULT_PAYMENT_CAPTURE_PAYLOAD,
-  DEFAULT_PAYMENT_UPDATE_PAYLOAD,
-  DEFAULT_REFERENCE_TRANSACTION_PAYLOAD
-} from "../constants";
+  DEFAULT_CREATE_ORDER_PAYLOAD,
+  DEFAULT_UPDATE_ORDER_PAYLOAD
+} from "./constants";
 
 export async function create(
   token: IPayPalAccessToken,
@@ -13,9 +11,7 @@ export async function create(
   headers?: any
 ) {
   const payload =
-    data && Object.keys(data).length > 0
-      ? data
-      : DEFAULT_PAYMENT_CREATE_PAYLOAD;
+    data && Object.keys(data).length > 0 ? data : DEFAULT_CREATE_ORDER_PAYLOAD;
 
   const options = {
     method: "POST",
@@ -27,35 +23,7 @@ export async function create(
     body: JSON.stringify(payload)
   };
   return await fetch(
-    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/payment`,
-    options
-  );
-}
-
-export async function capture(
-  token: IPayPalAccessToken,
-  id: string,
-  data?: any,
-  headers?: any
-) {
-  const payload =
-    data && Object.keys(data).length > 0
-      ? data
-      : DEFAULT_PAYMENT_CAPTURE_PAYLOAD;
-
-  const options = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token.access_token}`,
-      "Content-Type": "application/json",
-      ...headers
-    },
-    body: JSON.stringify(payload)
-  };
-  return await fetch(
-    `${CONFIG.get(
-      "PAYPAL_REST_HOSTNAME"
-    )}/v1/payments/authorizations/${id}/capture`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders`,
     options
   );
 }
@@ -67,9 +35,7 @@ export async function update(
   headers?: any
 ) {
   const payload =
-    data && Object.keys(data).length > 0
-      ? data
-      : DEFAULT_PAYMENT_UPDATE_PAYLOAD;
+    data && Object.keys(data).length > 0 ? data : DEFAULT_UPDATE_ORDER_PAYLOAD;
 
   const options = {
     method: "PATCH",
@@ -81,45 +47,37 @@ export async function update(
     body: JSON.stringify(payload)
   };
   return await fetch(
-    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/payment/${id}`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}`,
     options
   );
 }
 
-export async function referenceTransaction(
+export async function get(
   token: IPayPalAccessToken,
-  billingAgreementId: string,
-  data?: any,
+  id: string,
   headers?: any
 ) {
-  const payload =
-    data && Object.keys(data).length > 0
-      ? data
-      : DEFAULT_REFERENCE_TRANSACTION_PAYLOAD;
-
-  payload.payer.funding_instruments[0].billing.billing_agreement_id = billingAgreementId;
-
   const options = {
-    method: "POST",
+    method: "GET",
     headers: {
       Authorization: `Bearer ${token.access_token}`,
       "Content-Type": "application/json",
       ...headers
-    },
-    body: JSON.stringify(payload)
+    }
   };
   return await fetch(
-    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/payment`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}`,
     options
   );
 }
 
-export async function authorizeOrder(
+export async function authorize(
   token: IPayPalAccessToken,
   id: string,
   data?: any,
   headers?: any
 ) {
+  // TODO: add a default
   const payload = data;
 
   const options = {
@@ -132,17 +90,18 @@ export async function authorizeOrder(
     body: JSON.stringify(payload)
   };
   return await fetch(
-    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/orders/${id}/authorize`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}/authorize`,
     options
   );
 }
 
-export async function captureOrder(
+export async function capture(
   token: IPayPalAccessToken,
   id: string,
   data?: any,
   headers?: any
 ) {
+  // TODO: add a default
   const payload = data;
 
   const options = {
@@ -155,7 +114,7 @@ export async function captureOrder(
     body: JSON.stringify(payload)
   };
   return await fetch(
-    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v1/payments/orders/${id}/capture`,
+    `${CONFIG.get("PAYPAL_REST_HOSTNAME")}/v2/checkout/orders/${id}/capture`,
     options
   );
 }
