@@ -10,6 +10,7 @@ import * as Webhooks from "./webhooks";
 import * as Middleware from "./middleware";
 import * as Partner from "./partner";
 import * as Risk from "./risk";
+import * as Tracking from "./tracking";
 
 export {
   Orders,
@@ -20,5 +21,6 @@ export {
   Middleware,
   Partner,
   Utils,
-  Risk
+  Risk,
+  Tracking
 };
