@@ -23,6 +23,7 @@ Oauth.createAccessToken()
     .then(data => document.getElementById('result').innerHTML = JSON.stringify(data));
 ```
 
+
 ### Middleware
 
 If you are using typescript you may have to define the property on express.  add a file `src/types/express/index.d.ts` and add
